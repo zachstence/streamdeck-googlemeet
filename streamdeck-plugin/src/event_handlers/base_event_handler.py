@@ -91,3 +91,9 @@ class EventHandler:
 
     def _make_simple_sd_event(self, event_type: str) -> str:
         return json.dumps({"event": event_type})
+
+    def _make_sd_event_with_payload(self, event_type: str, payload: object) -> str:
+        return json.dumps({
+            "event": event_type,
+            "payload": payload,
+        })

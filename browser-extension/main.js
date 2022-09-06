@@ -13,6 +13,7 @@ const eventHandlers = [
   new MicEventHandler(connectionManager),
   new CameraEventHandler(connectionManager),
   new LeaveCallEventHandler(connectionManager),
+  new KickParticipantEventHandler(connectionManager),
   new ChatEventHandler(connectionManager),
   new ParticipantsEventHandler(connectionManager),
   new PinPresentationEventHandler(connectionManager),
@@ -21,5 +22,8 @@ const eventHandlers = [
 ]
 
 connectionManager.initialize();
-eventHandlers.forEach((handler) => connectionManager.registerEventHandler(handler));
+eventHandlers.forEach((handler) => {
+  console.log(`registering handler ${handler} ${handler.name}`)
+  connectionManager.registerEventHandler(handler)
+});
 eventHandlers.forEach((handler) => handler.initialize());
